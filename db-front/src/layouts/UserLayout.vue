@@ -4,13 +4,13 @@
       <div class="top">
         <div class="header">
           <a href="/">
-            
+
             <img src="/EportLogo.png" class="logo" alt="logo" >
-            <span class="title">Eport</span>
+            <span class="title">X-Singer</span>
           </a>
         </div>
         <div class="desc">
-          您的健身器件管理专家
+          您的歌手推荐系统专家
 
         </div>
       </div>
@@ -25,7 +25,7 @@
         </div>
         -->
         <div class="copyright">
-          Copyright &copy; 2019 Eport
+          Copyright &copy; 2020 X-Singer
         </div>
       </div>
     </div>
@@ -83,7 +83,7 @@ export default {
         .header {
           height: 78px;
           line-height: 44px;
-          
+
 
           .badge {
             position: absolute;

@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="copyright">
       Copyright
-      <a-icon type="copyright" /> 2019 <span>Eport 健身器件检修管理系统</span>
+      <a-icon type="copyright" /> 2019 <span>X-Singer 歌手推荐系统</span>
     </div>
   </div>
 </template>

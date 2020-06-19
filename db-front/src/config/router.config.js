@@ -1,22 +1,45 @@
 /* eslint-disable */
-import { UserLayout, BasicLayout, RouteView, BlankLayout, PageView } from '@/layouts'
-import { bxAnaalyse, codeAPI, chat } from '@/core/icons'
-import { addAccessoryInWarehouse } from '@/api/accessory'
+import {UserLayout, BasicLayout, RouteView, BlankLayout, PageView} from '@/layouts'
+import {bxAnaalyse, codeAPI, chat} from '@/core/icons'
+import {addAccessoryInWarehouse} from '@/api/accessory'
 
 export const asyncRouterMap = [
   {
     path: '/',
     name: 'index',
     component: BasicLayout,
-    meta: { title: '首页' },
+    meta: {title: '首页'},
     redirect: '/homepage',
     children: [
       {
         path: '/homepage',
         name: 'homepage',
-        meta: { title: '个人中心', keepAlive: true, icon: 'user' },
+        meta: {title: '个人中心', keepAlive: true, icon: 'user'},
         component: () => import('@/views/user/Homepage'),
       },
+
+      //search
+      {
+        path: '/search',
+        name: 'search',
+        redirect: '/search/searching',
+        component: RouteView,
+        meta: {
+          title: '搜索', keepAlive: true, icon: 'search'
+        },
+        children: [
+          {
+            path: '/search/searching',
+            name: 'Searching',
+            component: () => import('@/views/search/searching'),
+            meta: {
+              title: '搜索', keepAlive: false, icon: 'search'
+            }
+          },
+        ]
+      },
+
+
       // warehouse
       {
         path: '/warehouse',
@@ -48,7 +71,7 @@ export const asyncRouterMap = [
             path: '/warehouse/map',
             name: 'Map',
             component: () => import('@/views/warehouse/Map'),
-            meta: { title: '地图', keepAlive: false, icon: 'picture' }
+            meta: {title: '地图', keepAlive: false, icon: 'picture'}
           }
         ]
       },
@@ -57,7 +80,7 @@ export const asyncRouterMap = [
         path: '/equipment',
         name: 'equipment',
         redirect: '/equipment/preview',
-        meta: { title: '器材', keepAlive: true, icon: 'sliders' },
+        meta: {title: '器材', keepAlive: true, icon: 'sliders'},
         component: RouteView,
         children: [
           {
@@ -91,7 +114,7 @@ export const asyncRouterMap = [
       {
         path: '/accessory',
         name: 'accessory',
-        meta: { title: '配件', keepAlive: true, icon: 'tool' },
+        meta: {title: '配件', keepAlive: true, icon: 'tool'},
         component: RouteView,
         children: [
           {
@@ -110,25 +133,25 @@ export const asyncRouterMap = [
         name: 'sheets',
         redirect: '/sheets/workSheet',
         component: RouteView,
-        meta: { title: '表单', keepAlive: true, icon: "table" },
+        meta: {title: '表单', keepAlive: true, icon: "table"},
         children: [
           {
             path: '/sheets/repairSheet',
             name: 'repairSheet',
             component: () => import('@/views/sheets/repairSheet'),
-            meta: { title: '报修单', keepAlive: false, icon: 'exception' }
+            meta: {title: '报修单', keepAlive: false, icon: 'exception'}
           },
           {
             path: '/sheets/checkSheet',
             name: 'checkSheet',
             component: () => import('@/views/sheets/checkSheet'),
-            meta: { title: '巡检单', keepAlive: false, icon: 'copy' }
+            meta: {title: '巡检单', keepAlive: false, icon: 'copy'}
           },
           {
             path: '/sheets/workSheet',
             name: 'workSheet',
             component: () => import('@/views/sheets/workSheet'),
-            meta: { title: '工单', keepAlive: false, icon: 'snippets' }
+            meta: {title: '工单', keepAlive: false, icon: 'snippets'}
           },
           {
             path: '/sheets/components/:details',
@@ -141,20 +164,19 @@ export const asyncRouterMap = [
           },
         ]
       },
-
       // staff
       {
         path: '/staff',
         name: 'staff',
         redirect: '/staff/staffManage',
         component: RouteView,
-        meta: { title: '员工', keepAlive: true, icon: "team", permission: ['super'] },
+        meta: {title: '员工', keepAlive: true, icon: "team", permission: ['super']},
         children: [
           {
             path: '/staff/staffManage',
             name: 'staffManage',
             component: () => import('@/views/staff/staffManage'),
-            meta: { title: '员工管理', keepAlive: false, icon: 'check-circle', permission: ['super'] }
+            meta: {title: '员工管理', keepAlive: false, icon: 'check-circle', permission: ['super']}
           }
         ]
       },
@@ -163,19 +185,19 @@ export const asyncRouterMap = [
         name: 'server',
         redirect: '/server/KibanaMonitor',
         component: RouteView,
-        meta: { title: '服务器', keepAlive: true, icon: bxAnaalyse },
+        meta: {title: '服务器', keepAlive: true, icon: bxAnaalyse},
         children: [
           {
             path: '/server/KibanaMonitor',
             name: 'KibanaMonitor',
             component: () => import('@/views/server/KibanaMonitor'),
-            meta: { title: '监控', keepAlive: false, icon: bxAnaalyse }
+            meta: {title: '监控', keepAlive: false, icon: bxAnaalyse}
           },
           {
             path: '/server/Swagger',
             name: 'Swagger',
             component: () => import('@/views/server/Swagger'),
-            meta: { title: 'API', keepAlive: false, icon: codeAPI }
+            meta: {title: 'API', keepAlive: false, icon: codeAPI}
           },
         ]
       },
@@ -183,7 +205,7 @@ export const asyncRouterMap = [
         path: '/chat',
         name: 'chat',
         component: () => import('@/views/chat/Rocket'),
-        meta: { title: '聊天', keepAlive: true, icon: chat },
+        meta: {title: '聊天', keepAlive: true, icon: chat},
       }
     ]
   },

@@ -119,8 +119,8 @@
     </div>
       <!-- input bar end -->
       <!-- refresh button -->
-      
-  
+
+
       <!-- table -->
       <a-card>
         <a-table :columns="columns" :dataSource="DataShow" :loading="loading" />

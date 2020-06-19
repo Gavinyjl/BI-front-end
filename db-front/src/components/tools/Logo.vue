@@ -18,7 +18,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Eport',
+      default: 'X-Singer',
       required: false
     },
     showTitle: {
